@@ -61,10 +61,6 @@ async def freshtap(ctx):
 	await ctx.send('https://www.youtube.com/watch?v=BdzShsSspC8')
 
 @bot.command()
-async def whatitdoyugi(ctx):
-    await ctx.send("https://www.youtube.com/watch?v=AUnPN385wLI")
-
-@bot.command()
 async def card(ctx):
 	imagetosend = "images/" + fetchRandom()
 	await ctx.send(file=discord.File(imagetosend))
