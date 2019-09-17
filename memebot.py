@@ -35,6 +35,7 @@ async def on_ready():
 async def help(ctx):
 	str = "```"
 	str += "!breaktheconditioning: links video of alex jones screaming\n"
+	str += "!whatitdoyugi: links video of Yu-Gi-Oh vr\n"
 	str += "!frogs: links video of alex jones screaming\n"
 	str += "!freshtap: links instructional video on how to make tap water\n"
 	str += "!whatitdoyugi: links informative video on pot of greed's card effect\n"
@@ -46,6 +47,10 @@ async def help(ctx):
 @bot.command()
 async def breaktheconditioning(ctx):
 	await ctx.send('https://www.youtube.com/watch?v=p2-4rJmYEfU')
+	
+@bot.command()
+async def whatitdoyugi(ctx):
+	await ctx.send('https://www.youtube.com/watch?v=AUnPN385wLI')
 	
 @bot.command()
 async def frogs(ctx):
