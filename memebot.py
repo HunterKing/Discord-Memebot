@@ -37,6 +37,7 @@ async def help(ctx):
 	str += "!breaktheconditioning: links video of alex jones screaming\n"
 	str += "!frogs: links video of alex jones screaming\n"
 	str += "!freshtap: links instructional video on how to make tap water\n"
+	str += "!whatitdoyugi: links informative video on pot of greed's card effect\n"
 	str += "!card: fetches a random CS-themed yu-gi-oh card\n"
 	str += "!addcard url: downloads the image linked and adds to the !card pool\n"
 	str += "```"
@@ -53,6 +54,10 @@ async def frogs(ctx):
 @bot.command()
 async def freshtap(ctx):
 	await ctx.send('https://www.youtube.com/watch?v=BdzShsSspC8')
+
+@bot.command()
+async def whatitdoyugi(ctx):
+    await ctx.send("https://www.youtube.com/watch?v=AUnPN385wLI")
 
 @bot.command()
 async def card(ctx):
