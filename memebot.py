@@ -51,6 +51,8 @@ async def help(ctx):
     str += "!whatitdoyugi: links informative video on pot of greed's card effect\n"
     str += "!card: fetches a random CS-themed yu-gi-oh card\n"
     str += "!addcard url: downloads the image linked and adds to the !card pool\n"
+    str += "!numcards: fetches # of cards loaded into array\n"
+    str += "!forceupdate: forces a re-check of the image directory\n"
     str += "```"
     await ctx.send(str)
 
