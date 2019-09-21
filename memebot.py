@@ -53,6 +53,7 @@ async def help(ctx):
     str += "!addcard url: downloads the image linked and adds to the !card pool\n"
     str += "!numcards: fetches # of cards loaded into array\n"
     str += "!forceupdate: forces a re-check of the image directory\n"
+    str += "!wtfisupdennys: links to great concert at dennys\n"
     str += "```"
     await ctx.send(str)
 
@@ -66,7 +67,7 @@ async def whatitdoyugi(ctx):
 
 @bot.command()
 async def wtfisupdennys(ctx):
-    await ctx.send('https://www.youtube.com/watch?v=QBw4huCadBQ')    
+    await ctx.send('https://www.youtube.com/watch?v=QBw4huCadBQ')
 
 @bot.command()
 async def frogs(ctx):
