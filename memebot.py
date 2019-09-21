@@ -9,7 +9,7 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix='!', help_command = None)
 TOKEN = '' #Set token to load bot.
-ADMIN_ROLE = '' #Set Admin role for some commands. 
+ADMIN_ROLE = '' #Set Admin role for some commands.
 GAME = discord.Game("Joel-san, Daisuke!! ~Joel Swanson Dating Simulator~") #Game title for bot.
 IMAGE_PATH = '/home/hunter/Documents/meme/Discord-Memebot/images/' #when running as a systemd service, relative paths have some trouble.
 num_files = 0
@@ -17,7 +17,7 @@ image_names = []
 
 def enumeratefiles():
     global num_files
-    global image_names 
+    global image_names
     num_files = 0 #since we will traverse the entire folder again, we must reset num_files.
     image_names = []
     for root, dirs, files in os.walk(IMAGE_PATH):
@@ -59,15 +59,19 @@ async def help(ctx):
 @bot.command()
 async def breaktheconditioning(ctx):
     await ctx.send('https://www.youtube.com/watch?v=p2-4rJmYEfU')
-    
+
 @bot.command()
 async def whatitdoyugi(ctx):
     await ctx.send('https://www.youtube.com/watch?v=AUnPN385wLI')
-    
+
+@bot.command()
+async def wtfisupdennys(ctx):
+    await ctx.send('https://www.youtube.com/watch?v=QBw4huCadBQ')    
+
 @bot.command()
 async def frogs(ctx):
     await ctx.send('https://www.youtube.com/watch?v=_ePLkAm8i2s')
-    
+
 @bot.command()
 async def freshtap(ctx):
     await ctx.send('https://www.youtube.com/watch?v=BdzShsSspC8')
@@ -76,7 +80,7 @@ async def freshtap(ctx):
 async def card(ctx):
     imagetosend = IMAGE_PATH + fetchRandom()
     await ctx.send(file=discord.File(imagetosend))
-  
+
 @bot.command()
 async def forceupdate(ctx):
     global num_files
