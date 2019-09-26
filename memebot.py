@@ -61,6 +61,7 @@ async def help(ctx):
 @bot.command()
 async def breaktheconditioning(ctx):
     await ctx.send('https://www.youtube.com/watch?v=p2-4rJmYEfU')
+
 @bot.command()
 async def magictrick(ctx):
     await ctx.send('https://www.youtube.com/watch?v=qzLNy38hiLY')
