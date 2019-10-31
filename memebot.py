@@ -10,8 +10,8 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix='!', help_command = None)
 TOKEN = '' #Set token to load bot.
 ADMIN_ROLE = '' #Set Admin role for some commands.
-GAME = discord.Game("Joel-san, Daisuke!! ~Joel Swanson Dating Simulator~") #Game title for bot.
-IMAGE_PATH = '/home/hunter/Documents/meme/Discord-Memebot/images/' #when running as a systemd service, relative paths have some trouble.
+GAME = discord.Game("") #Game title for bot.
+IMAGE_PATH = '' #when running as a systemd service, relative paths have some trouble.
 num_files = 0
 image_names = []
 
