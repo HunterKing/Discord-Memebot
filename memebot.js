@@ -1,11 +1,11 @@
 //Load Discord.js pre-reqs and setup.
 const Discord = require('discord.js');
 const { Client } = require('discord.js');
-const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
 const config = require('./config.json');
 const fs = require('fs');
-//Load misc libraries.
+
+const bot = new Discord.Client();
+bot.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 
@@ -36,7 +36,5 @@ bot.on('message', message =>{
 		message.reply('That command does not exist.');
 	}
 });
-
-//If enumerateFiles() is called, we need to remake our list of filenames.
 
 bot.login(config.token)

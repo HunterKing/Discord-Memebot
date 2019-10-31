@@ -1,7 +1,5 @@
-const { prefix } = require('../config.json');
+const config = require('../config.json');
 //TODO: Try to move these to the config.json at a later date.
-const disease = ['ligma', 'sugma', 'wilma', 'chugma', 'gargledeez', 'boufa', 'poppingamer', 'upgamer', 'kizma', 'chokama', 'grabma', 'swallama', 'candis', 'grabahun'];
-const disease_prefixes = ['Have you heard of the deadly disease', 'What\'s', 'Did you see Joe with', 'God I\'ve been craving', 'I\'ve been so horny for', 'What do you know about'];
 
 module.exports = {
 	name: 'help',
@@ -13,12 +11,12 @@ module.exports = {
 		const { commands } = message.client;
 		if (!args.length) {
 			//Collect a random ligma line.
-			var ligma_prefix = disease_prefixes[Math.floor(Math.random()*disease_prefixes.length)]
-			var ligma = disease[Math.floor(Math.random()*disease.length)]
+			var ligma_prefix = config.ligmaprefix[Math.floor(Math.random()*config.ligmaprefix.length)]
+			var ligma = config.ligma[Math.floor(Math.random()*config.ligma.length)]
 			data.push(`\`\`\``);
 			data.push(commands.map(command => command.name).join(', '));
 			data.push(`\`\`\``);
-			data.push(`You can send \`${prefix}help [command name]\` to get info on a specific command.`);
+			data.push(`You can send \`${config.prefix}help [command name]\` to get info on a specific command.`);
 			data.push(`\n${ligma_prefix} ${ligma}`);
 			message.channel.send(data);
 		}

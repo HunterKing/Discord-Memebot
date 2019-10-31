@@ -12,12 +12,6 @@ module.exports = {
 	},
 };
 
-function enumerateFiles() {
-	images = fs.readdirSync(config.imagepath);
-	console.log(images.toString());
-	console.log(numFiles);
-}
-
 function fetchRandom() {
 	return config.imagepath + images[Math.floor(Math.random()*images.length)];
 }
