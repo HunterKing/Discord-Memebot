@@ -8,3 +8,9 @@ module.exports = {
 		message.channel.send("In progress...");
 	},
 };
+
+function enumerateFiles() {
+	images = fs.readdirSync(config.imagepath);
+	console.log(images.toString());
+	console.log(numFiles);
+}
