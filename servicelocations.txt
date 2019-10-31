@@ -1,5 +1,0 @@
-display-manager.service
-/etc/systemd/system/display-manager.service
-
-lightdm.service
-/lib/systemd/system/lightdm.service
