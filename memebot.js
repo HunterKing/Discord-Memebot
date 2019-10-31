@@ -1,60 +1,42 @@
-//home/hunter/Documents/meme/Discord-Memebot/images/ is going to be our final path but not worth yet.
+//Load Discord.js pre-reqs and setup.
 const Discord = require('discord.js');
-const { Client, Attachment} = require('discord.js');
-const fs = require('fs');
-const isImageUrl = require('is-image-url');
-const config = require('./config.json');
+const { Client } = require('discord.js');
 const bot = new Discord.Client();
-var files = fs.readdirSync(config.imagepath);
-var numFiles = files.length;
+bot.commands = new Discord.Collection();
+const config = require('./config.json');
+const fs = require('fs');
+//Load misc libraries.
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	bot.commands.set(command.name, command);
+}
+
 
 bot.on('ready', () => {
-	console.log(`Logged in as ${bot.user.tag}!`);
+	console.log(`Logged in as ${bot.user.tag}`);
 	bot.user.setActivity(config.game);
 });
 
-bot.on("message", (message) => {
-	if(!message.content.startsWith(config.prefix)) return;
+bot.on('message', message =>{
+	if(!message.content.startsWith(config.prefix) || message.author.bot) return;
+	//Catch message and clip off prefix to check files.
+	const args = message.content.slice(config.prefix.length).split(/ +/);
+	const commandName = args.shift().toLowerCase();
+	const command = bot.commands.get(commandName);
 
-	if(message.content === (config.prefix + "breaktheconditioning")){
-		message.channel.send("https://www.youtube.com/watch?v=p2-4rJmYEfU");
+	if(!bot.commands.has(commandName)) return;
+	try{
+		command.execute(message, args);
 	}
-
-	if(message.content === (config.prefix + "magictrick")){
-		message.channel.send("https://www.youtube.com/watch?v=qzLNy38hiLY");
-	}
-
-	if(message.content === (config.prefix + "whatitdoyugi")){
-		message.channel.send("https://www.youtube.com/watch?v=AUnPN385wLI");
-	}
-
-	if(message.content ===(config.prefix + "wtfisupdennys")){
-		message.channel.send("https://www.youtube.com/watch?v=QBw4huCadBQ'");
-	}
-
-	if(message.content === (config.prefix + "frogs")){
-		message.channel.send("https://www.youtube.com/watch?v=_ePLkAm8i2s");
-	}
-
-	if(message.content === (config.prefix + "freshtap")){
-		message.channel.send("https://www.youtube.com/watch?v=BdzShsSspC8");
-	}
-
-	if(message.content === (config.prefix + "card")){
-		const attachment = new Attachment(fetchRandom());
-		message.channel.send(attachment);
+	catch(error){
+		console.error(error);
+		message.reply('That command does not exist.');
 	}
 });
 
 //If enumerateFiles() is called, we need to remake our list of filenames.
-function enumerateFiles() {
-	files = fs.readdirSync(config.imagepath);
-	console.log(files.toString());
-	console.log(numFiles);
-}
-
-function fetchRandom() {
-	return config.imagepath + files[Math.floor(Math.random()*files.length)];
-}
 
 bot.login(config.token)
