@@ -5,7 +5,8 @@
   "main": "memebot.js",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "is-image-url": "^1.1.8"
+    "is-image-url": "^1.1.8",
+    "wget-improved": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -15,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/hunterking/discord-memebot.git"
   },
-  "author": "Hunter",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hunterking/discord-memebot/issues"

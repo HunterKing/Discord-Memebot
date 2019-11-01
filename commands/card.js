@@ -1,17 +1,18 @@
-const{Attachment} = require('discord.js');
-const config = require('../config.json');
 const fs = require('fs');
-var images = fs.readdirSync(config.imagepath);
+const { Attachment } = require('discord.js');
+const { imagepath } = require('../config.json');
+var images = fs.readdirSync(imagepath);
 
 module.exports = {
 	name: "card",
 	description: "Links a random CS-themed card.",
 	execute(message) {
+		console.log(images);
 		const attachment = new Attachment(fetchRandom());
 		message.channel.send(attachment);
 	},
 };
 
 function fetchRandom() {
-	return config.imagepath + images[Math.floor(Math.random()*images.length)];
+	return imagepath + images[Math.floor(Math.random()*images.length)];
 }
