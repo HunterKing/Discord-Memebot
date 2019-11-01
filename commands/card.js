@@ -11,6 +11,7 @@ module.exports = {
 		const attachment = new Attachment(fetchRandom());
 		message.channel.send(attachment);
 	},
+	images: images
 };
 
 function fetchRandom() {
