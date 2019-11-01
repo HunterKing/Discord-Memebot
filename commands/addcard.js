@@ -3,8 +3,7 @@ const isImageUrl = require('is-image-url');
 const fs = require('fs');
 const wget = require('wget-improved');
 //Load variables.
-const config = require('../config.json');
-const card = require('./card.js');
+const { imagepath } = require('../config.json')
 
 module.exports = {
 	name: "addcard",
@@ -15,7 +14,6 @@ module.exports = {
 		if(isImageUrl(url)){
 			try{
 				downloadFile(url);
-				enumerateFiles();
 				message.channel.send("Card downloaded.");
 			}
 			catch(error){
@@ -26,15 +24,9 @@ module.exports = {
 	},
 };
 
-function enumerateFiles(){
-	console.log("Re-fetching files. Current image path is:");
-	console.log(fs.readdirSync(config.imagepath));
-	card.images = fs.readdirSync(config.imagepath);
-}
-
 function downloadFile(url){
 	const filename = url.substring(url.lastIndexOf('/') + 1);
 	console.log("Filename is " + filename);
 	console.log("Attempting to download image at: " + url);
-	wget.download(url, config.imagepath + filename);
+	wget.download(url, imagepath + filename);
 }
