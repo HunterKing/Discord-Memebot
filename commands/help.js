@@ -29,11 +29,25 @@ module.exports = {
 				return message.reply('that\'s not a valid command!');
 			}
 
-			data.push(`**Name:** ${command.name}`);
+			var commandname = command.name;
+			var description = command.description;
+			if(command.aliases != undefined){
+				description += ("\n" + command.aliases);
+			}
+
+			message.channel.send({embed: {
+				fields: [{
+					name: "!" + commandname,
+					value: description
+				}]
+			}});
+
+
+			/*data.push(`**Name:** ${command.name}`);
 			if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
 			if (command.description) data.push(`**Description:** ${command.description}`);
 			if (command.usage) data.push(`**Usage:** ${config.prefix}${command.name} ${command.usage}`);
-			message.channel.send(data, { split: true });
+			message.channel.send(data, { split: true });*/
 		}
 	}
 }
